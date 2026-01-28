@@ -38,7 +38,7 @@ jobs:
           BASE_CODE=$(python3 - <<'PY'
           import re, subprocess, sys
           txt = subprocess.check_output(["git","show","${{ github.base_ref }}:app/build.gradle"], text=True)
-          m = re.search(r"(?m)^\s*versionCode\s+(\d+)\s*$", txt)
+          m = re.search(r"(?m)^\s*versionCode\s*=?\s*(\d+)\s*$", txt)
           if not m: 
               print("0")
               sys.exit(0)

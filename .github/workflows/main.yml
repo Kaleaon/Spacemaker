@@ -253,16 +253,25 @@ jobs:
           echo "Signing APK with keystore..."
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > release-keystore.jks
           
+          # Copy unsigned APK to temporary file for signing
+          cp app/build/outputs/apk/release/app-release-unsigned.apk \
+             app/build/outputs/apk/release/app-release-temp.apk
+          
+          # Sign the temporary APK
           jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
             -keystore release-keystore.jks \
             -storepass "$KEYSTORE_PASSWORD" \
             -keypass "$KEY_PASSWORD" \
-            app/build/outputs/apk/release/app-release-unsigned.apk \
+            app/build/outputs/apk/release/app-release-temp.apk \
             "$KEY_ALIAS"
-            
+          
+          # Zipalign the signed APK to final signed APK
           $ANDROID_HOME/build-tools/34.0.0/zipalign -v 4 \
-            app/build/outputs/apk/release/app-release-unsigned.apk \
+            app/build/outputs/apk/release/app-release-temp.apk \
             app/build/outputs/apk/release/app-release-signed.apk
+          
+          # Clean up temporary file
+          rm app/build/outputs/apk/release/app-release-temp.apk
             
           echo "signed=true" >> $GITHUB_OUTPUT
           echo "APK signed successfully"
@@ -319,14 +328,18 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: debug-apk
-        path: app/build/outputs/apk/debug/Spacemaker-v${{ steps.version.outputs.version-name }}-debug.apk
+        path: |
+          app/build/outputs/apk/debug/Spacemaker-v${{ steps.version.outputs.version-name }}-debug.apk
+          app/build/outputs/apk/debug/Spacemaker-v${{ steps.version.outputs.version-name }}-debug.apk.sha256
         
     - name: Upload release APK
       if: steps.build-debug.outcome == 'success'
       uses: actions/upload-artifact@v4
       with:
         name: release-apk
-        path: app/build/outputs/apk/release/Spacemaker-v${{ steps.version.outputs.version-name }}-release*.apk
+        path: |
+          app/build/outputs/apk/release/Spacemaker-v${{ steps.version.outputs.version-name }}-release*.apk
+          app/build/outputs/apk/release/Spacemaker-v${{ steps.version.outputs.version-name }}-release*.apk.sha256
 
   release:
     name: Create GitHub Release

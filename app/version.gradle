@@ -6,8 +6,8 @@ ext {
     def buildFile = file('build.gradle')
     def buildContent = buildFile.text
     
-    // Extract version name - handles both "versionName" and 'versionName' quotes
-    def versionNameMatcher = buildContent =~ /versionName\s*=?\s*["']([^"']+)["']/
+    // Extract version name - matches quoted string on the same line
+    def versionNameMatcher = buildContent =~ /versionName\s*=?\s*["']([^"'\n\r]+)["']/
     if (versionNameMatcher.find()) {
         appVersionName = versionNameMatcher.group(1)
     } else {
