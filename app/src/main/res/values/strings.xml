@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Spacemaker</string>
+    <string name="start_scan">Start AR Scan</string>
+    <string name="stop_scan">Stop Scan</string>
+    <string name="save_blueprint">Save Blueprint</string>
+    <string name="camera_permission_required">Camera permission is required for AR scanning</string>
+    <string name="ar_not_supported">ARCore is not supported on this device</string>
+    <string name="scanning">Scanning...</string>
+    <string name="scan_complete">Scan Complete</string>
+    <string name="blueprint_saved">Blueprint saved successfully</string>
+    <string name="error_saving">Error saving blueprint</string>
+    <string name="welcome_message">Welcome to Spacemaker - Create 3D floorplans using AR</string>
+    <string name="tap_to_start">Tap below to start scanning</string>
+    <string name="points_captured">Points captured: %d</string>
+    <string name="move_device">Move your device slowly to scan the space</string>
+</resources>
