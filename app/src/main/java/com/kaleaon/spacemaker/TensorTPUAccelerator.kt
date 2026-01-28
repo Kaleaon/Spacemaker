@@ -62,8 +62,7 @@ class TensorTPUAccelerator(private val context: Context) {
             val compatList = CompatibilityList()
             
             if (compatList.isDelegateSupportedOnThisDevice) {
-                val delegateOptions = compatList.bestOptionsForThisDevice
-                gpuDelegate = GpuDelegate(delegateOptions)
+                gpuDelegate = GpuDelegate()
                 return true
             }
         } catch (e: Exception) {

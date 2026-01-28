@@ -71,7 +71,12 @@ object PlaneProcessor {
             else -> DetectedPlane.PlaneType.UNKNOWN
         }
         
-        val polygon = plane.polygon.toList().chunked(2).map { 
+        val polygonBuffer = plane.polygon
+        val polygonFloats = mutableListOf<Float>()
+        while (polygonBuffer.hasRemaining()) {
+            polygonFloats.add(polygonBuffer.get())
+        }
+        val polygon = polygonFloats.chunked(2).map { 
             floatArrayOf(it[0], it[1])
         }
         
