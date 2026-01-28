@@ -24,4 +24,30 @@
     <string name="export_format_triangle">Exporting Triangle Splatting format</string>
     <string name="export_format_both">Exporting both formats</string>
     <string name="filament_rendering">High-quality Filament rendering active</string>
+    
+    <!-- Video Upload Feature -->
+    <string name="upload_video">Upload Video</string>
+    <string name="video_upload_title">Video to Gaussian Splat</string>
+    <string name="video_upload_description">Select a video to extract frames for 3D Gaussian splatting reconstruction. The extracted frames will be processed with COLMAP to estimate camera poses.</string>
+    <string name="select_video">Select Video</string>
+    <string name="extract_frames">Extract Frames</string>
+    <string name="export_gaussian_splat">Export for Gaussian Splatting</string>
+    <string name="video_selected">Video selected - Ready to extract frames</string>
+    <string name="video_info_format" formatted="false">Resolution: %1$s x %2$s\nDuration: %.1f seconds</string>
+    <string name="video_info_unavailable">Video information unavailable</string>
+    <string name="extracting_frames">Extracting frames from video…</string>
+    <string name="extraction_complete">Frame extraction complete!</string>
+    <string name="extraction_failed">Frame extraction failed</string>
+    <string name="frames_extracted">Frames extracted: %d</string>
+    <string name="frames_extracted_total">Total frames extracted: %d</string>
+    <string name="frames_saved_to">Frames saved to: %s</string>
+    <string name="extraction_error">Extraction error: %s</string>
+    <string name="exporting_gaussian_splat">Exporting for Gaussian splatting…</string>
+    <string name="export_complete">Export complete!</string>
+    <string name="export_failed">Export failed</string>
+    <string name="export_error">Error exporting data</string>
+    <string name="export_error_detail">Export error: %s</string>
+    <string name="gaussian_splat_exported">Gaussian splat data exported to: %s</string>
+    <string name="storage_permission_required">Storage permission is required to select videos</string>
+    <string name="video_upload_status_ready">Select a video to begin</string>
 </resources>

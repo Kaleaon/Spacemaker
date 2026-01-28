@@ -57,12 +57,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
     
-    // Google Filament - High-quality 3D rendering
-    implementation 'com.google.android.filament:filament-android:1.51.5'
-    implementation 'com.google.android.filament:filament-utils-android:1.51.5'
-    implementation 'com.google.android.filament:gltfio-android:1.51.5'
-    
     // Depth API (for compatible devices with ToF/LDAF sensors)
+    // Note: Sceneform includes Google Filament for 3D rendering
     implementation 'com.google.ar.sceneform:core:1.17.1'
     
     // TensorFlow Lite for TPU acceleration on Pixel 10
