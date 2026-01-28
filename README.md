@@ -1,216 +1,217 @@
 # Spacemaker
 
-A comprehensive guide and toolkit for utilizing Sweet Home 3D plugins and tools to create professional home designs with enhanced capabilities.
+A powerful 3D Android AR scanning application for creating accurate floorplans, blueprints, and architectural documentation using cutting-edge augmented reality and neural rendering technologies.
 
-## Overview
+## 🌟 Advanced Features
 
-Spacemaker leverages the power of [Sweet Home 3D](https://sweethome3d.com/) - a free interior design application that helps you draw the plan of your house, arrange furniture on it, and visit the results in 3D. This repository provides documentation and resources for expanding Sweet Home 3D's functionality through plugins and tools.
+Spacemaker integrates state-of-the-art 3D reconstruction technologies:
 
-## Table of Contents
+- **🔺 Triangle Splatting** - High-fidelity radiance field rendering for complex geometry
+- **📐 PGSR** - Planar-based Gaussian Splatting optimized for indoor scenes with flat surfaces
+- **🔬 Google Pixel 10 LDAF** - Enhanced depth sensing with laser autofocus
+- **🌙 Night Mode** - Low-light scanning capabilities
+- **🎨 Google Filament** - High-quality real-time 3D rendering engine
 
-- [Getting Started](#getting-started)
-- [Core Features](#core-features)
-- [Plugins](#plugins)
-- [Tools](#tools)
-- [Installation Guide](#installation-guide)
-- [Resources](#resources)
+See [ADVANCED_FEATURES.md](ADVANCED_FEATURES.md) for detailed information.
 
-## Getting Started
+## Features
+
+- **AR-Powered Scanning**: Utilize Google ARCore for real-time 3D space scanning
+- **Point Cloud Capture**: Capture millions of 3D points to accurately represent physical spaces
+- **Floorplan Generation**: Convert AR scan data into structured floorplan formats
+- **Blueprint Export**: Save scans as XYZ point cloud files for further processing
+- **Real-time Feedback**: Live point count and scanning status updates
+- **Simple Interface**: Intuitive UI for easy scanning and data management
+
+## Requirements
+
+- Android device with ARCore support (Android 7.0 / API Level 24 or higher)
+- Camera permission
+- ARCore services installed (automatically prompted if not present)
+
+## Installation
 
 ### Prerequisites
 
-1. Download and install [Sweet Home 3D](https://sweethome3d.com/download.jsp)
-2. Familiarize yourself with the basic interface
-3. Review available plugins to enhance your workflow
+1. Android Studio Arctic Fox or later
+2. Android SDK 34 or higher
+3. Gradle 8.1.0 or higher
+4. JDK 17
 
-### Quick Start
+### Build Instructions
 
-1. Launch Sweet Home 3D
-2. Create a new project or open an existing one
-3. Install recommended plugins (see [Plugins](#plugins) section)
-4. Start designing with enhanced capabilities
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Kaleaon/Spacemaker.git
+   cd Spacemaker
+   ```
 
-## Core Features
+2. Open the project in Android Studio
 
-Sweet Home 3D provides powerful core features out of the box:
+3. Sync Gradle files
 
-- **2D/3D Floor Plan Design**: Draw walls, rooms, and structures with precision
+4. Build and run on an ARCore-compatible device:
+   ```bash
+   ./gradlew assembleDebug
+   ```
+
+## Usage
+
+### Starting a Scan
+
+1. Launch the Spacemaker app
+2. Grant camera permissions when prompted
+3. Tap "Start AR Scan" button
+4. Move your device slowly around the space you want to scan
+5. The app will automatically capture 3D points as you move
+
+### Scanning Tips
+
+- Move slowly and steadily for best results
+- Ensure good lighting conditions
+- Point the camera at different angles to capture all surfaces
+- Watch the point count to track scanning progress
+- Scan walls, floors, and ceilings for complete floorplans
+
+### Saving Blueprints
+
+1. Once scanning is complete, tap "Stop Scan"
+2. Review the captured point count
+3. Tap "Save Blueprint" to export the data
+4. Files are saved in XYZ format in the app's documents directory
+5. File naming format: `blueprint_<timestamp>.xyz`
+
+### Blueprint File Format
+
+The exported files use the XYZ point cloud format:
+```
+# Spacemaker Blueprint
+# Points: <count>
+# Format: X Y Z
+<x1> <y1> <z1>
+<x2> <y2> <z2>
+...
+```
+
+## Architecture
+
+### Technologies Used
+
+- **Kotlin**: Primary programming language
+- **Google ARCore**: AR framework for spatial tracking and point cloud generation
+- **AndroidX**: Modern Android development components
+- **Material Components**: Google's Material Design UI components
+- **Camera2 API**: Camera access and control
+- **OpenGL ES 2.0**: Rendering engine for AR visualization
+
+### Project Structure
+
+```
+app/
+├── src/main/
+│   ├── java/com/kaleaon/spacemaker/
+│   │   ├── MainActivity.kt           # Main entry point and permissions
+│   │   └── ARScanActivity.kt         # AR scanning and point cloud capture
+│   ├── res/
+│   │   ├── layout/
+│   │   │   ├── activity_main.xml     # Main screen layout
+│   │   │   └── activity_ar_scan.xml  # AR scanning screen layout
+│   │   ├── values/
+│   │   │   ├── strings.xml           # String resources
+│   │   │   ├── colors.xml            # Color definitions
+│   │   │   └── themes.xml            # App themes
+│   │   └── mipmap/                   # App icons
+│   └── AndroidManifest.xml           # App configuration and permissions
+├── build.gradle                       # Module-level build configuration
+└── proguard-rules.pro                # ProGuard rules
+```
+
+### Key Components
+
+#### MainActivity
+- Handles app initialization
+- Checks ARCore availability
+- Manages camera permissions
+- Launches AR scanning activity
+
+#### ARScanActivity
+- Manages ARCore session
+- Implements OpenGL rendering
+- Captures 3D point cloud data
+- Handles scan controls and export
+
+## Data Export
+
+Scanned blueprints are saved to:
+```
+/Android/data/com.kaleaon.spacemaker/files/Documents/
+```
+
+These files can be:
+- Imported into CAD software
+- Processed with point cloud tools
+- Converted to other 3D formats
+- Used for architectural visualization
+
+## Permissions
+
+The app requires the following permissions:
+- **Camera**: Required for AR scanning
+- **Storage**: For saving blueprint files (Android 9 and below)
+
+## Known Limitations
+
+- Requires ARCore-compatible device
+- Best results in well-lit environments
+- Large scans may consume significant memory
+- Point cloud accuracy depends on device sensors
+
+## Sweet Home 3D Integration
+
+Spacemaker scans can be enhanced and visualized using [Sweet Home 3D](https://sweethome3d.com/) - a free interior design application. Export your AR scans and import them into Sweet Home 3D for:
+
 - **Furniture Placement**: Drag and drop furniture from extensive catalogs
 - **3D Visualization**: Real-time 3D preview of your designs
 - **Virtual Tours**: Create walkthroughs of your designed spaces
-- **Dimension Tools**: Add measurements and annotations
-- **Photo-Realistic Rendering**: Generate high-quality images of your designs
+- **Photo-Realistic Rendering**: Generate high-quality images
 
-## Plugins
+### Recommended Plugins
 
-Plugins extend Sweet Home 3D's functionality significantly. Here are the essential plugins organized by category:
+| Plugin | Description | Use Case |
+|--------|-------------|----------|
+| **Advanced Editing** | Enhanced object manipulation | Precise furniture placement |
+| **Sweet Home Lights** | Professional lighting control | Realistic lighting setup |
+| **Wirings Plugin** | Electrical and plumbing design | Utility planning |
+| **SVG Import/Export** | Vector graphics support | CAD compatibility |
 
-### Advanced Editing Plugins
+See [docs/PLUGINS_DETAILED.md](docs/PLUGINS_DETAILED.md) for comprehensive plugin documentation and [docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md) for shortcuts and tips.
 
-| Plugin | Description | Key Features |
-|--------|-------------|--------------|
-| **Advanced Editing** | Enhanced object manipulation | Batch operations, precise transformations, multi-object editing |
-| **AutoDimensioning** | Automatic measurement tools | Auto-generate dimensions, smart labeling |
-| **Object Tags** | Organization system | Tag objects, filter by tags, batch management |
+## Future Enhancements
 
-### Lighting and Rendering Plugins
-
-| Plugin | Description | Key Features |
-|--------|-------------|--------------|
-| **Sweet Home Lights** | Professional lighting control | RGB settings, LED strips, light grids, color temperature |
-| **Automate Lights Rendering** | Automated light configuration | Batch light placement, rendering presets |
-| **Photo/Video Plugin** | Enhanced media export | High-resolution exports, video walkthroughs |
-
-### Utility Design Plugins
-
-| Plugin | Description | Key Features |
-|--------|-------------|--------------|
-| **Wirings Plugin** | Electrical and plumbing design | 3D polylines, snap-to features, measurement labels |
-| **Stair Builder** | Custom staircase creation | Various stair types, customizable dimensions |
-| **Roof Generator** | Automated roof design | Multiple roof styles, auto-generation |
-| **Camera Data Generator** | Advanced camera tools | Multiple viewpoints, presentation modes |
-
-### Import/Export Plugins
-
-| Plugin | Description | Key Features |
-|--------|-------------|--------------|
-| **SVG Import/Export** | Vector graphics support | CAD compatibility, scalable exports |
-| **Plan Image Export** | High-resolution plan images | Custom resolutions, print-ready outputs |
-| **OBJ Export** | 3D model export | Use in other 3D applications |
-
-### AI-Powered Features
-
-Sweet Home 3D supports AI-enhanced capabilities through add-ons:
-
-- **Intelligent Room Layout**: Smart suggestions for furniture placement
-- **Auto-Lighting**: Automated lighting based on room function
-- **Design Suggestions**: AI-powered recommendations for novice users
-- **Time-of-Day Effects**: Realistic lighting simulation
-
-## Tools
-
-### Built-in Tools
-
-| Tool | Description | Usage |
-|------|-------------|-------|
-| **Wall Drawing** | Create walls with precise dimensions | Click and drag to draw walls |
-| **Room Editor** | Define and modify room shapes | Select rooms and edit properties |
-| **Furniture Catalog** | Browse and place furniture | Drag items to floor plan |
-| **Dimension Lines** | Add measurements | Click to place dimension markers |
-| **Text Labels** | Add annotations | Click to place text labels |
-| **Compass** | Set north direction | Adjust for accurate lighting |
-
-### Navigation Tools
-
-| Tool | Description | Shortcut |
-|------|-------------|----------|
-| **Zoom** | Zoom in/out of view | Scroll wheel |
-| **Pan** | Move the view | Middle mouse button |
-| **3D View** | Toggle 3D preview | View menu |
-| **Virtual Tour** | Walk through design | Create virtual visitor |
-
-### Measurement Tools
-
-- **Distance Measuring**: Measure between any two points
-- **Area Calculation**: Automatic room area computation
-- **Volume Estimation**: 3D space volume calculation
-- **Grid Snapping**: Precise placement with customizable grids
-
-## Installation Guide
-
-### Installing Plugins
-
-1. **Download Plugins**
-   - Visit [Sweet Home 3D Plugins Page](https://sweethome3d.com/plugins/)
-   - Or browse [SourceForge Repository](https://sourceforge.net/p/sweethome3d/plug-ins/)
-
-2. **Install Plugins**
-   - Download the `.sh3p` plugin file
-   - Double-click to install automatically
-   - Or manually place in the plugins folder:
-     - **Windows**: `C:\Users\[Username]\AppData\Roaming\eTeks\Sweet Home 3D\plugins`
-     - **macOS**: `~/Library/Application Support/eTeks/Sweet Home 3D/plugins`
-     - **Linux**: `~/.eteks/sweethome3d/plugins`
-
-3. **Activate Plugins**
-   - Restart Sweet Home 3D
-   - Access new features from the menu or toolbar
-
-### Installing Furniture Libraries
-
-1. Download `.sh3f` furniture library files
-2. Go to `Furniture > Import furniture library`
-3. Select the downloaded file
-4. New items appear in the furniture catalog
-
-### Installing Texture Libraries
-
-1. Download `.sh3t` texture library files
-2. Go to `Furniture > Import textures library`
-3. Select the downloaded file
-4. New textures available for materials
-
-## Resources
-
-### Official Resources
-
-- [Sweet Home 3D Official Website](https://sweethome3d.com/)
-- [User Guide](https://sweethome3d.com/userGuide.jsp)
-- [Video Tutorials](https://sweethome3d.com/videoTutorial.jsp)
-- [Forum](https://sweethome3d.com/forum/)
-
-### Plugin Resources
-
-- [Official Plugins Page](https://sweethome3d.com/plugins/)
-- [SourceForge Plugins](https://sourceforge.net/p/sweethome3d/plug-ins/)
-- [Community Contributions](https://sweethome3d.com/importModels.jsp)
-
-### Furniture and Texture Libraries
-
-- [Free 3D Models Library](https://sweethome3d.com/freeModels.jsp)
-- [Additional Furniture](https://sweethome3d.com/importModels.jsp)
-- [Texture Resources](https://sweethome3d.com/importTextures.jsp)
-
-### Learning Resources
-
-- [Getting Started Guide](https://sweethome3d.com/userGuide.jsp#Introduction)
-- [YouTube Tutorials](https://www.youtube.com/results?search_query=sweet+home+3d+tutorial)
-- [Community Blog](https://sweethome3d.com/blog/)
-
-## Best Practices
-
-### Design Workflow
-
-1. **Plan First**: Sketch your ideas before digital design
-2. **Start with Walls**: Define room boundaries first
-3. **Add Structure**: Include doors, windows, and stairs
-4. **Place Furniture**: Arrange main furniture pieces
-5. **Fine-tune Lighting**: Set up light sources
-6. **Apply Materials**: Add textures and colors
-7. **Render**: Generate final images or videos
-
-### Plugin Recommendations by Use Case
-
-| Use Case | Recommended Plugins |
-|----------|---------------------|
-| **Interior Design** | Advanced Editing, Sweet Home Lights, Photo/Video |
-| **Architectural Planning** | Roof Generator, Stair Builder, SVG Export |
-| **Electrical Planning** | Wirings Plugin, AutoDimensioning |
-| **Real Estate Presentation** | Photo/Video, Camera Data Generator |
-| **DIY Home Projects** | AutoDimensioning, Advanced Editing |
+- 2D floorplan visualization from point cloud
+- Multi-format export (PLY, OBJ, IFC)
+- Room detection and labeling
+- Measurement tools
+- Cloud storage integration
+- Collaborative scanning
+- Direct Sweet Home 3D export integration
 
 ## Contributing
 
-Contributions are welcome! If you have suggestions for additional plugins, tools, or documentation improvements:
-
-1. Fork this repository
-2. Create a feature branch
-3. Submit a pull request
+Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is available for educational and commercial use.
 
----
+## Support
 
-*Note: Sweet Home 3D is a registered trademark of eTeks. This project is an independent documentation resource and is not affiliated with eTeks or the Sweet Home 3D project.*
+For ARCore support and compatible devices, visit:
+https://developers.google.com/ar/devices
+
+## Acknowledgments
+
+- Google ARCore team for the AR framework
+- Android development community
+- Material Design guidelines
+- Sweet Home 3D team for the interior design application
