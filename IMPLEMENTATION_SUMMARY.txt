@@ -66,6 +66,7 @@ KEY FEATURES IMPLEMENTED
    ✅ Explicit workflow permissions (contents: read by default)
    ✅ CodeQL security scanning passed (0 alerts)
    ✅ Secure APK signing with GitHub secrets
+   ✅ actions/download-artifact updated to v4.1.3 (fixes CVE arbitrary file write)
 
 ====================================================================
 WORKFLOW TRIGGERS
@@ -119,6 +120,7 @@ ADAPTATIONS FROM CLEVERFERRET
 
 5. Permissions:
    - Added explicit workflow permissions for security
+   - Fixed actions/download-artifact vulnerability (v4 → v4.1.3)
 
 ====================================================================
 KNOWN LIMITATIONS
