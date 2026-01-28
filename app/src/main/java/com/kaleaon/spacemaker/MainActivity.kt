@@ -15,17 +15,23 @@ class MainActivity : AppCompatActivity() {
 
     private val CAMERA_PERMISSION_CODE = 100
     private lateinit var startScanButton: MaterialButton
+    private lateinit var uploadVideoButton: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         startScanButton = findViewById(R.id.startScanButton)
+        uploadVideoButton = findViewById(R.id.uploadVideoButton)
         
         startScanButton.setOnClickListener {
             if (checkARCoreSupport() && checkCameraPermission()) {
                 startARScan()
             }
+        }
+        
+        uploadVideoButton.setOnClickListener {
+            startVideoUpload()
         }
     }
 
@@ -79,6 +85,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun startARScan() {
         val intent = Intent(this, ARScanActivity::class.java)
+        startActivity(intent)
+    }
+    
+    private fun startVideoUpload() {
+        val intent = Intent(this, VideoUploadActivity::class.java)
         startActivity(intent)
     }
 }

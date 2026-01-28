@@ -10,6 +10,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     
+    <!-- Video access permission for Android 13+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    
     <!-- AR features -->
     <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
     <uses-feature android:name="android.hardware.camera" android:required="true" />
@@ -39,6 +42,11 @@
         
         <activity
             android:name=".ARScanActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name=".VideoUploadActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
     </application>
