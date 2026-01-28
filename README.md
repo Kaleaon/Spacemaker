@@ -166,6 +166,26 @@ The app requires the following permissions:
 - Large scans may consume significant memory
 - Point cloud accuracy depends on device sensors
 
+## Sweet Home 3D Integration
+
+Spacemaker scans can be enhanced and visualized using [Sweet Home 3D](https://sweethome3d.com/) - a free interior design application. Export your AR scans and import them into Sweet Home 3D for:
+
+- **Furniture Placement**: Drag and drop furniture from extensive catalogs
+- **3D Visualization**: Real-time 3D preview of your designs
+- **Virtual Tours**: Create walkthroughs of your designed spaces
+- **Photo-Realistic Rendering**: Generate high-quality images
+
+### Recommended Plugins
+
+| Plugin | Description | Use Case |
+|--------|-------------|----------|
+| **Advanced Editing** | Enhanced object manipulation | Precise furniture placement |
+| **Sweet Home Lights** | Professional lighting control | Realistic lighting setup |
+| **Wirings Plugin** | Electrical and plumbing design | Utility planning |
+| **SVG Import/Export** | Vector graphics support | CAD compatibility |
+
+See [docs/PLUGINS_DETAILED.md](docs/PLUGINS_DETAILED.md) for comprehensive plugin documentation and [docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md) for shortcuts and tips.
+
 ## Future Enhancements
 
 - 2D floorplan visualization from point cloud
@@ -174,6 +194,7 @@ The app requires the following permissions:
 - Measurement tools
 - Cloud storage integration
 - Collaborative scanning
+- Direct Sweet Home 3D export integration
 
 ## Contributing
 
