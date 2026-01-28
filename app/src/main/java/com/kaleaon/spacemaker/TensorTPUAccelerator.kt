@@ -56,6 +56,8 @@ class TensorTPUAccelerator(private val context: Context) {
     
     /**
      * Initialize GPU delegate (fallback or complement to TPU)
+     * Note: Using default GpuDelegate() constructor instead of bestOptionsForThisDevice
+     * due to API compatibility issues with GpuDelegateFactory.Options in TFLite 2.14.0
      */
     private fun initializeGPUDelegate(): Boolean {
         try {
