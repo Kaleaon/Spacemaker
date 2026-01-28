@@ -214,4 +214,3 @@ https://developers.google.com/ar/devices
 - Google ARCore team for the AR framework
 - Android development community
 - Material Design guidelines
-- Sweet Home 3D team for the interior design application
