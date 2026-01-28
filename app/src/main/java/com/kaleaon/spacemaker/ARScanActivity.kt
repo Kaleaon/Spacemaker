@@ -26,7 +26,11 @@ class ARScanActivity : AppCompatActivity(), GLSurfaceView.Renderer {
     
     private var session: Session? = null
     private val pointCloud = mutableListOf<FloatArray>()
+    private val capturedFrames = mutableListOf<ARFrame>()
+    private val detectedPlanes = mutableListOf<DetectedPlane>()
     private var isScanning = true
+    private var frameCount = 0
+    private val FRAME_CAPTURE_INTERVAL = 10 // Capture every 10th frame
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -14,4 +14,14 @@
     <string name="tap_to_start">Tap below to start scanning</string>
     <string name="points_captured">Points captured: %d</string>
     <string name="move_device">Move your device slowly to scan the space</string>
+    <string name="pixel10_detected">Pixel 10 detected - Enhanced depth available</string>
+    <string name="ldaf_enabled">LDAF sensor active - High precision depth</string>
+    <string name="night_mode_enabled">Night mode active - Optimized for low light</string>
+    <string name="depth_quality_high">Depth Quality: High (Hardware sensor)</string>
+    <string name="depth_quality_medium">Depth Quality: Medium (Software)</string>
+    <string name="depth_quality_low">Depth Quality: Low (Point cloud)</string>
+    <string name="export_format_pgsr">Exporting PGSR format (Planar surfaces)</string>
+    <string name="export_format_triangle">Exporting Triangle Splatting format</string>
+    <string name="export_format_both">Exporting both formats</string>
+    <string name="filament_rendering">High-quality Filament rendering active</string>
 </resources>

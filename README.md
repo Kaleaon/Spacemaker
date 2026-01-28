@@ -1,6 +1,18 @@
 # Spacemaker
 
-A powerful 3D Android AR scanning application for creating accurate floorplans, blueprints, and architectural documentation using augmented reality technology.
+A powerful 3D Android AR scanning application for creating accurate floorplans, blueprints, and architectural documentation using cutting-edge augmented reality and neural rendering technologies.
+
+## 🌟 Advanced Features
+
+Spacemaker integrates state-of-the-art 3D reconstruction technologies:
+
+- **🔺 Triangle Splatting** - High-fidelity radiance field rendering for complex geometry
+- **📐 PGSR** - Planar-based Gaussian Splatting optimized for indoor scenes with flat surfaces
+- **🔬 Google Pixel 10 LDAF** - Enhanced depth sensing with laser autofocus
+- **🌙 Night Mode** - Low-light scanning capabilities
+- **🎨 Google Filament** - High-quality real-time 3D rendering engine
+
+See [ADVANCED_FEATURES.md](ADVANCED_FEATURES.md) for detailed information.
 
 ## Features
 
