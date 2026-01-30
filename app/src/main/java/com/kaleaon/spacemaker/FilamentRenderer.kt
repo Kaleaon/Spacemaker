@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.Surface
 import android.view.SurfaceView
 import com.google.android.filament.*
-import com.google.android.filament.android.DisplayHelper
 import com.google.android.filament.android.UiHelper
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -21,7 +20,6 @@ class FilamentRenderer(private val context: Context) {
     private lateinit var view: View
     private lateinit var camera: Camera
     private lateinit var swapChain: SwapChain
-    private lateinit var displayHelper: DisplayHelper
     private lateinit var uiHelper: UiHelper
     
     private var pointCloudEntity: Int = 0
@@ -37,7 +35,7 @@ class FilamentRenderer(private val context: Context) {
             renderer = engine.createRenderer()
             scene = engine.createScene()
             view = engine.createView()
-            camera = engine.createCamera(engine.entityManager.create())
+            camera = engine.createCamera(EntityManager.get().create())
             
             // Configure view
             view.scene = scene
@@ -66,7 +64,6 @@ class FilamentRenderer(private val context: Context) {
                         engine.destroySwapChain(swapChain)
                     }
                     swapChain = engine.createSwapChain(surface)
-                    displayHelper = DisplayHelper(context)
                 }
                 
                 override fun onDetachedFromSurface() {
@@ -241,7 +238,7 @@ class FilamentRenderer(private val context: Context) {
         
         try {
             // Begin frame
-            if (renderer.beginFrame(swapChain, 0)) {
+            if (renderer.beginFrame(swapChain)) {
                 renderer.render(view)
                 renderer.endFrame()
             }

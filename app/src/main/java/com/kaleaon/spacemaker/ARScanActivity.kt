@@ -142,10 +142,10 @@ class ARScanActivity : AppCompatActivity(), GLSurfaceView.Renderer {
                         
                         val pointsList = mutableListOf<FloatArray>()
                         while (buffer.hasRemaining()) {
-                            val x = buffer.float
-                            val y = buffer.float
-                            val z = buffer.float
-                            val confidence = buffer.float
+                            val x = buffer.get()
+                            val y = buffer.get()
+                            val z = buffer.get()
+                            val confidence = buffer.get()
                             
                             if (confidence > 0.5f) {
                                 pointsList.add(floatArrayOf(x, y, z))
